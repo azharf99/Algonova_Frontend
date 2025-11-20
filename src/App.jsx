@@ -2,6 +2,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 import StudentsPage from './pages/StudentsPage'
 import GroupsPage from './pages/GroupsPage'
 import LessonsPage from './pages/LessonsPage'
+import FeedbacksPage from './pages/FeedbacksPage'
 import LoginPage from './pages/LoginPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import { useAuth } from './context/AuthContext'
@@ -36,6 +37,7 @@ function App() {
             {user && <li><Link to="/students" className="text-gray-300 hover:text-indigo-400 transition">Students</Link></li>}
             {user && <li><Link to="/groups" className="text-gray-300 hover:text-indigo-400 transition">Groups</Link></li>}
             {user && <li><Link to="/lessons" className="text-gray-300 hover:text-indigo-400 transition">Lessons</Link></li>}
+            {user && <li><Link to="/feedbacks" className="text-gray-300 hover:text-indigo-400 transition">Feedbacks</Link></li>}
             {user && <li><button onClick={logout} className="px-4 py-2 bg-gray-800 border border-transparent rounded-md text-sm font-medium text-white hover:border-indigo-500 transition">Logout</button></li>}
           </ul>
         </div>
@@ -67,6 +69,14 @@ function App() {
                   <LessonsPage />
                 </ProtectedRoute>
               }
+          />
+          <Route
+            path="/feedbacks"
+            element={
+              <ProtectedRoute>
+                <FeedbacksPage />
+              </ProtectedRoute>
+            }
             />
             <Route path="/" element={
               <ProtectedRoute>
