@@ -123,8 +123,14 @@ const LessonsPage = () => {
 
   const handleImport = async (importedData) => {
     try {
-      await lessonApi.importCSV(importedData);
-      toast.success('Lessons imported successfully! Refreshing list...');
+      const response = await lessonApi.importCSV(importedData);
+      const { created, updated, errors } = response;
+      let message = `Lesson import finished. Created: ${created}, Updated: ${updated}.`;
+      if (errors && errors.length > 0) {
+        message += ` Errors: ${errors.length}. See console for details.`;
+        console.error("Import errors:", errors);
+      }
+      toast.success(message);
       fetchLessons();
     } catch (err) {
       toast.error('Failed to import lessons.');

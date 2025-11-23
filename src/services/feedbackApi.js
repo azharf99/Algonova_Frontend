@@ -46,11 +46,14 @@ export const feedbackApi = {
     body: JSON.stringify(feedback),
   }),
   delete: (id) => api(`${API_BASE_URL}/feedbacks/${id}/`, { method: 'DELETE' }),
-  importCSV: (feedbacks) => api(`${API_BASE_URL}/feedbacks/import_json/`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(feedbacks),
-  }),
+  importCSV: (file) => {
+    const formData = new FormData();
+    formData.append('file', JSON.stringify(file));
+    return api(`${API_BASE_URL}/feedbacks/import/`, {
+      method: 'POST',
+      body: formData,
+    });
+  },
   downloadAll: () => downloadFile(`${getBaseUrl()}/feedback/download-all/`),
   downloadByGroup: (groupId) => downloadFile(`${getBaseUrl()}/feedback/download/${groupId}/`),
 };

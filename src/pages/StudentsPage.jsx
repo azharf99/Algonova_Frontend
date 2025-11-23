@@ -125,8 +125,14 @@ const StudentsPage = () => {
   const handleImport = async (importedData) => {
     try {
       // Assuming your backend has an endpoint for bulk import
-      await studentApi.importCSV(importedData);
-      toast.success('Students imported successfully! Refreshing list...');
+      const response = await studentApi.importCSV(importedData);
+      const { created, updated, errors } = response;
+      let message = `Students import finished. Created: ${created}, Updated: ${updated}.`;
+      if (errors && errors.length > 0) {
+        message += ` Errors: ${errors.length}. See console for details.`;
+        console.error("Import errors:", errors);
+      }
+      toast.success(message);
       fetchStudents(); // Refresh the list
     } catch (err) {
       toast.error('Failed to import students.');

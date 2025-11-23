@@ -37,9 +37,12 @@ export const groupApi = {
   // NOTE: Your backend has this at `.../import` but it expects multipart/form-data
   // For consistency with the student import, we'll assume a JSON endpoint.
   // If you need multipart, this would require a different setup.
-  importCSV: (groups) => api(`${API_BASE_URL}/groups/import_json/`, { // Assuming a new endpoint `import_json`
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(groups),
-  }),
+  importCSV: (file) => {
+    const formData = new FormData();
+    formData.append('file', JSON.stringify(file));
+    return api(`${API_BASE_URL}/groups/import/`, {
+      method: 'POST',
+      body: formData,
+    });
+  },
 };

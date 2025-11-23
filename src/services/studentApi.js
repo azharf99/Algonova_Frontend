@@ -34,11 +34,13 @@ export const studentApi = {
     method: 'DELETE',
   }),
 
-  // NOTE: You need to implement this endpoint in your Django backend.
-  // It should accept a list of student objects.
-  importCSV: (students) => api(`${API_BASE_URL}/students/import/`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(students),
-  }),
+  // This endpoint expects multipart/form-data with a 'file' field.
+  importCSV: (file) => {
+    const formData = new FormData();
+    formData.append('file', JSON.stringify(file));
+    return api(`${API_BASE_URL}/students/import/`, {
+      method: 'POST',
+      body: formData,
+    });
+  },
 };

@@ -122,8 +122,15 @@ const GroupsPage = () => {
 
   const handleImport = async (importedData) => {
     try {
-      await groupApi.importCSV(importedData);
-      toast.success('Groups imported successfully! Refreshing list...');
+      const response = await groupApi.importCSV(importedData);
+      const { created, updated, errors } = response;
+      let message = `Group import finished. Created: ${created}, Updated: ${updated}.`;
+      if (errors && errors.length > 0) {
+        message += ` Errors: ${errors.length}. See console for details.`;
+        console.error("Import errors:", errors);
+      }
+      toast.success(message);
+      console.log(importedData)
       fetchGroups();
     } catch (err) {
       toast.error('Failed to import groups.');

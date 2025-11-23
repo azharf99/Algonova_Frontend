@@ -124,8 +124,14 @@ const FeedbacksPage = () => {
 
   const handleImport = async (importedData) => {
     try {
-      await feedbackApi.importCSV(importedData);
-      toast.success('Feedbacks imported successfully! Refreshing list...');
+      const response = await feedbackApi.importCSV(importedData);
+      const { created, updated, errors } = response;
+      let message = `Feedback import finished. Created: ${created}, Updated: ${updated}.`;
+      if (errors && errors.length > 0) {
+        message += ` Errors: ${errors.length}. See console for details.`;
+        console.error("Import errors:", errors);
+      }
+      toast.success(message);
       fetchFeedbacks();
     } catch (err) {
       toast.error('Failed to import feedbacks.');

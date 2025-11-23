@@ -23,9 +23,12 @@ export const lessonApi = {
   }),
 
   // Assuming a JSON import endpoint for consistency
-  importCSV: (lessons) => api(`${API_BASE_URL}/lessons/import_json/`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(lessons),
-  }),
+  importCSV: (file) => {
+    const formData = new FormData();
+    formData.append('file', JSON.stringify(file));
+    return api(`${API_BASE_URL}/lessons/import/`, {
+      method: 'POST',
+      body: formData,
+    });
+  },
 };
