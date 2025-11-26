@@ -83,12 +83,23 @@ const FeedbackForm = ({ isOpen, onClose, onSubmit, feedback }) => {
     onSubmit(submissionData);
   };
 
-  const scoreOptions = [
-    { value: '5', label: '5 - Excellent' },
-    { value: '4', label: '4 - Good' },
-    { value: '3', label: '3 - Average' },
-    { value: '2', label: '2 - Needs Improvement' },
-    { value: '1', label: '1 - Poor' },
+  const attendanceOptions = [
+    { value: '4', label: '4 - Excellent' },
+    { value: '3', label: '3 - Good' },
+    { value: '2', label: '2 - Average' },
+    { value: '1', label: '1 - Needs Improvement' },
+    { value: '0', label: '0 - Poor' },
+  ];
+  const activityOptions = [
+    { value: '3', label: '3 - Active' },
+    { value: '2', label: '2 - Quiet Active' },
+    { value: '1', label: '1 - Passive' },
+    { value: '0', label: '0 - Not Active' },
+  ];
+  const taskOptions = [
+    { value: '2', label: '2 - All Tasks Done' },
+    { value: '1', label: '1 - Some Taks Done' },
+    { value: '0', label: '0 - No Taks Done' },
   ];
 
   return (
@@ -136,19 +147,19 @@ const FeedbackForm = ({ isOpen, onClose, onSubmit, feedback }) => {
           <div className="space-y-1">
             <label htmlFor="feedback_attendance_score">Attendance Score</label>
             <select id="feedback_attendance_score" name="attendance_score" value={formData.attendance_score} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              {scoreOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+              {attendanceOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
             </select>
           </div>
           <div className="space-y-1">
             <label htmlFor="feedback_activity_score">Activity Score</label>
             <select id="feedback_activity_score" name="activity_score" value={formData.activity_score} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              {scoreOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+              {activityOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
             </select>
           </div>
           <div className="space-y-1">
             <label htmlFor="feedback_task_score">Task Score</label>
             <select id="feedback_task_score" name="task_score" value={formData.task_score} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              {scoreOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+              {taskOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
             </select>
           </div>
           <div className="space-y-1 md:col-span-2">

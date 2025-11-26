@@ -79,6 +79,14 @@ The codebase is organized to be modular and scalable:
 ├── main.jsx       # Entry point of the application
 └── index.css      # Global styles and Tailwind CSS imports
 ```
+## 📂 Project Structure
+
+![Student List](src/assets/list-of-students.png)
+![Group List](src/assets/list-of-groups.png)
+![Lesson List](src/assets/list-of-lessons.png)
+![Feeedback List](src/assets/list-of-feedback.png)
+![Feeedback Example](src/assets/feedback-pdf.png)
+
 
 ## 🤝 Contributing
 
