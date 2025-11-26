@@ -7,8 +7,6 @@ const StudentForm = ({ isOpen, onClose, onSubmit, student }) => {
     surname: '',
     username: '',
     password: '',
-    email: '',
-    date_of_birth: '',
     phone_number: '',
     parent_name: '',
     parent_contact: '',
@@ -21,13 +19,11 @@ const StudentForm = ({ isOpen, onClose, onSubmit, student }) => {
         fullname: student.fullname || '',
         surname: student.surname || '',
         username: student.username || '',
-        email: student.email || '',
-        date_of_birth: student.date_of_birth || '',
         phone_number: student.phone_number || '',
         parent_name: student.parent_name || '',
         parent_contact: student.parent_contact || '',
         is_active: student.is_active ?? true,
-        password: '', // Password is not shown or updated here for security
+        password: student.password, // Password is not shown or updated here for security
       });
     } else {
       setFormData({
@@ -35,8 +31,6 @@ const StudentForm = ({ isOpen, onClose, onSubmit, student }) => {
         surname: '',
         username: '',
         password: '',
-        email: '',
-        date_of_birth: '',
         phone_number: '',
         parent_name: '',
         parent_contact: '',
@@ -78,14 +72,6 @@ const StudentForm = ({ isOpen, onClose, onSubmit, student }) => {
               <input id="student_password" type="password" name="password" value={formData.password} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
             </div>
           )}
-          <div className="space-y-1">
-          <label htmlFor="student_email">Email</label>
-            <input id="student_email" type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
-          </div>
-          <div className="space-y-1">
-          <label htmlFor="student_dob">Date of Birth</label>
-            <input id="student_dob" type="date" name="date_of_birth" value={formData.date_of_birth} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
-          </div>
           <div className="space-y-1">
           <label htmlFor="student_phone">Phone Number</label>
             <input id="student_phone" type="tel" name="phone_number" value={formData.phone_number} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
