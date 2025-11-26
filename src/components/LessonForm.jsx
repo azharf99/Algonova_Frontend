@@ -91,24 +91,24 @@ const LessonForm = ({ isOpen, onClose, onSubmit, lesson }) => {
         <h2 className="text-2xl font-bold mb-6">{lesson ? 'Edit Lesson' : 'Add Lesson'}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1 md:col-span-2">
-            <label>Title</label>
-            <input type="text" name="title" value={formData.title} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+            <label htmlFor="lesson_title">Title</label>
+            <input id="lesson_title" type="text" name="title" value={formData.title} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
           </div>
           <div className="space-y-1">
-            <label>Module</label>
-            <input type="text" name="module" value={formData.module} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <label htmlFor="lesson_module">Module</label>
+            <input id="lesson_module" type="text" name="module" value={formData.module} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1">
-            <label>Level</label>
-            <input type="text" name="level" value={formData.level} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <label htmlFor="lesson_level">Level</label>
+            <input id="lesson_level" type="text" name="level" value={formData.level} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1">
-            <label>Lesson Number</label>
-            <input type="number" name="number" value={formData.number} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" min="1" />
+            <label htmlFor="lesson_number">Lesson Number</label>
+            <input id="lesson_number" type="number" name="number" value={formData.number} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" min="1" />
           </div>
           <div className="space-y-1">
-            <label>Group</label>
-            <select name="group" value={formData.group} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+            <label htmlFor="lesson_group">Group</label>
+            <select id="lesson_group" name="group" value={formData.group} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
               <option value="" disabled>Select a group</option>
               {allGroups.map(group => (
                 <option key={group.id} value={group.id}>{group.name}</option>
@@ -116,19 +116,19 @@ const LessonForm = ({ isOpen, onClose, onSubmit, lesson }) => {
             </select>
           </div>
           <div className="space-y-1">
-            <label>Date Start</label>
-            <input type="date" name="date_start" value={formData.date_start} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <label htmlFor="lesson_date_start">Date Start</label>
+            <input id="lesson_date_start" type="date" name="date_start" value={formData.date_start} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1">
-            <label>Time Start</label>
-            <input type="time" name="time_start" value={formData.time_start} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <label htmlFor="lesson_time_start">Time Start</label>
+            <input id="lesson_time_start" type="time" name="time_start" value={formData.time_start} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1 md:col-span-2">
-            <label>Description</label>
-            <textarea name="description" value={formData.description} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <label htmlFor="lesson_description">Description</label>
+            <textarea id="lesson_description" name="description" value={formData.description} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1 md:col-span-2">
-            <label>Students Attended</label>
+            <label id="lesson_students_attended_label">Students Attended</label>
             <SearchableMultiSelect
               options={studentOptions}
               value={selectedStudentOptions}
@@ -144,8 +144,8 @@ const LessonForm = ({ isOpen, onClose, onSubmit, lesson }) => {
             </label>
           </div>
         </div>
-        <div className="flex justify-end gap-4 pt-4">
-          <button type="button" className="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-md text-white font-semibold transition" onClick={onClose}>Cancel</button>
+        <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-4">
+          <button type="button" className="w-full sm:w-auto px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-md text-white font-semibold transition" onClick={onClose}>Cancel</button>
           <button type="submit" className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white font-semibold transition">{lesson ? 'Update' : 'Create'}</button>
         </div>
       </form>

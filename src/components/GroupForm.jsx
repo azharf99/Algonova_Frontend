@@ -69,30 +69,30 @@ const GroupForm = ({ isOpen, onClose, onSubmit, group }) => {
         <h2 className="text-2xl font-bold mb-6">{group ? 'Edit Group' : 'Add Group'}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1">
-            <label>Name</label>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+            <label htmlFor="group_name">Name</label>
+            <input id="group_name" type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
           </div>
           <div className="space-y-1">
-            <label>Type</label>
-            <select name="type" value={formData.type} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <label htmlFor="group_type">Type</label>
+            <select id="group_type" name="type" value={formData.type} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
               <option value="Group">Group</option>
               <option value="Private">Private</option>
             </select>
           </div>
           <div className="space-y-1 md:col-span-2">
-            <label>Description</label>
-            <textarea name="description" value={formData.description} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <label htmlFor="group_description">Description</label>
+            <textarea id="group_description" name="description" value={formData.description} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1">
-            <label>Meeting Link</label>
-            <input type="url" name="meeting_link" value={formData.meeting_link} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <label htmlFor="group_meeting_link">Meeting Link</label>
+            <input id="group_meeting_link" type="url" name="meeting_link" value={formData.meeting_link} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1">
-            <label>Recordings Link</label>
-            <input type="url" name="recordings_link" value={formData.recordings_link} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <label htmlFor="group_recordings_link">Recordings Link</label>
+            <input id="group_recordings_link" type="url" name="recordings_link" value={formData.recordings_link} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1 md:col-span-2">
-            <label>Students</label>
+            <label id="group_students_label">Students</label>
             <SearchableMultiSelect
               options={studentOptions}
               value={selectedStudentOptions}
@@ -107,11 +107,11 @@ const GroupForm = ({ isOpen, onClose, onSubmit, group }) => {
             </label>
           </div>
         </div>
-        <div className="flex justify-end gap-4 pt-4">
-          <button type="button" className="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-md text-white font-semibold transition" onClick={onClose}>
+        <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-4">
+          <button type="button" className="w-full sm:w-auto px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-md text-white font-semibold transition" onClick={onClose}>
             Cancel
           </button>
-          <button type="submit" className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white font-semibold transition">
+          <button type="submit" className="w-full sm:w-auto px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white font-semibold transition">
             {group ? 'Update' : 'Create'}
           </button>
         </div>

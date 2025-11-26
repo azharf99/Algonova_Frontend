@@ -10,13 +10,13 @@ const DeleteConfirmationModal = ({ isOpen, onClose, onConfirm, studentName }) =>
         Are you sure you want to delete the student "<strong>{studentName}</strong>"?
         This action cannot be undone.
       </p>
-      <div className="flex justify-end gap-4 pt-6">
-        <button type="button" className="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-md text-white font-semibold transition" onClick={onClose}>
+      <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-6">
+        <button type="button" className="w-full sm:w-auto px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-md text-white font-semibold transition" onClick={onClose}>
           Cancel
         </button>
         <button
           type="button"
-          className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-md text-white font-semibold transition"
+          className="w-full sm:w-auto px-4 py-2 bg-red-600 hover:bg-red-700 rounded-md text-white font-semibold transition"
           onClick={onConfirm}
         >
           Delete

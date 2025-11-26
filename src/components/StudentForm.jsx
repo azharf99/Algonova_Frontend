@@ -61,42 +61,42 @@ const StudentForm = ({ isOpen, onClose, onSubmit, student }) => {
         <h2 className="text-2xl font-bold mb-6">{student ? 'Edit Student' : 'Add Student'}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1">
-          <label>Full Name</label>
-            <input type="text" name="fullname" value={formData.fullname} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+          <label htmlFor="student_fullname">Full Name</label>
+            <input id="student_fullname" type="text" name="fullname" value={formData.fullname} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
           </div>
           <div className="space-y-1">
-          <label>Surname</label>
-            <input type="text" name="surname" value={formData.surname} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+          <label htmlFor="student_surname">Surname</label>
+            <input id="student_surname" type="text" name="surname" value={formData.surname} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
           </div>
           <div className="space-y-1">
-          <label>Username</label>
-            <input type="text" name="username" value={formData.username} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+          <label htmlFor="student_username">Username</label>
+            <input id="student_username" type="text" name="username" value={formData.username} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
           </div>
           {!student && (
             <div className="space-y-1">
-              <label>Password</label>
-              <input type="password" name="password" value={formData.password} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+              <label htmlFor="student_password">Password</label>
+              <input id="student_password" type="password" name="password" value={formData.password} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
             </div>
           )}
           <div className="space-y-1">
-          <label>Email</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+          <label htmlFor="student_email">Email</label>
+            <input id="student_email" type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
           </div>
           <div className="space-y-1">
-          <label>Date of Birth</label>
-            <input type="date" name="date_of_birth" value={formData.date_of_birth} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+          <label htmlFor="student_dob">Date of Birth</label>
+            <input id="student_dob" type="date" name="date_of_birth" value={formData.date_of_birth} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
           </div>
           <div className="space-y-1">
-          <label>Phone Number</label>
-            <input type="tel" name="phone_number" value={formData.phone_number} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          <label htmlFor="student_phone">Phone Number</label>
+            <input id="student_phone" type="tel" name="phone_number" value={formData.phone_number} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1">
-          <label>Parent Name</label>
-            <input type="text" name="parent_name" value={formData.parent_name} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          <label htmlFor="student_parent_name">Parent Name</label>
+            <input id="student_parent_name" type="text" name="parent_name" value={formData.parent_name} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1">
-          <label>Parent Contact</label>
-            <input type="text" name="parent_contact" value={formData.parent_contact} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          <label htmlFor="student_parent_contact">Parent Contact</label>
+            <input id="student_parent_contact" type="text" name="parent_contact" value={formData.parent_contact} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="flex items-center h-full md:col-span-2">
             <label htmlFor="is_active" className="flex items-center gap-2 cursor-pointer">
@@ -112,11 +112,11 @@ const StudentForm = ({ isOpen, onClose, onSubmit, student }) => {
           </label>
           </div>
         </div>
-        <div className="flex justify-end gap-4 pt-4">
-          <button type="button" className="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-md text-white font-semibold transition" onClick={onClose}>
+        <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-4">
+          <button type="button" className="w-full sm:w-auto px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-md text-white font-semibold transition" onClick={onClose}>
             Cancel
           </button>
-          <button type="submit" className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white font-semibold transition">
+          <button type="submit" className="w-full sm:w-auto px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white font-semibold transition">
             {student ? 'Update' : 'Create'}
           </button>
         </div>

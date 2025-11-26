@@ -12,7 +12,7 @@ const SortableHeader = ({ children, sortKey, sortConfig, onSort }) => {
 };
 
 const FeedbackTable = ({ feedbacks, onEdit, onDelete, lastFeedbackRef }) => {
-  const [sortConfig, setSortConfig] = useState({ key: 'number', direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({ key: 'lesson_date', direction: 'descending' });
 
   const sortedFeedbacks = useMemo(() => {
     let sortableItems = [...feedbacks];
@@ -43,8 +43,11 @@ const FeedbackTable = ({ feedbacks, onEdit, onDelete, lastFeedbackRef }) => {
       <thead className="bg-gray-700">
         <tr className="border-b border-gray-600">
           <SortableHeader sortKey="number" sortConfig={sortConfig} onSort={requestSort}>No.</SortableHeader>
+          <th className="p-4 uppercase text-sm font-semibold text-gray-400">Student</th>
           <SortableHeader sortKey="topic" sortConfig={sortConfig} onSort={requestSort}>Topic</SortableHeader>
-          <th className="p-4 uppercase text-sm font-semibold text-gray-400">Group</th>
+          <SortableHeader sortKey="course" sortConfig={sortConfig} onSort={requestSort}>Course</SortableHeader>
+          <SortableHeader sortKey="level" sortConfig={sortConfig} onSort={requestSort}>Level</SortableHeader>
+          <SortableHeader sortKey="lesson_date" sortConfig={sortConfig} onSort={requestSort}>Lesson Date</SortableHeader>
           <SortableHeader sortKey="is_sent" sortConfig={sortConfig} onSort={requestSort}>Sent</SortableHeader>
           <th className="p-4 uppercase text-sm font-semibold text-gray-400">Actions</th>
         </tr>
@@ -54,9 +57,12 @@ const FeedbackTable = ({ feedbacks, onEdit, onDelete, lastFeedbackRef }) => {
           const isLastElement = sortedFeedbacks.length === index + 1;
           return (
             <tr key={feedback.id} ref={isLastElement ? lastFeedbackRef : null} className="border-b border-gray-700 hover:bg-gray-700/50">
-              <td className="p-4 text-center">{feedback.number}</td>
+              <td className="p-4 text-center font-medium">{feedback.number}</td>
+              <td className="p-4">{feedback.student_details?.fullname}</td>
               <td className="p-4">{feedback.topic}</td>
-              <td className="p-4">{feedback.group_details?.name}</td>
+              <td className="p-4">{feedback.course}</td>
+              <td className="p-4">{feedback.level}</td>
+              <td className="p-4">{feedback.lesson_date}</td>
               <td className="p-4">{feedback.is_sent ? 'Yes' : 'No'}</td>
               <td className="p-4">
                 <div className="flex gap-2">

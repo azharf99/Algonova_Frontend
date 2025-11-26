@@ -9,6 +9,7 @@ import ImportCSVModal from '../components/ImportCSVModal';
 import SkeletonTable from '../components/SkeletonTable';
 import DeleteConfirmationModal from '../components/DeleteConfirmationModal';
 import DownloadFeedbackModal from '../components/DownloadFeedbackModal';
+import SendWhatsappModal from '../components/SendWhatsappModal';
 
 const FeedbacksPage = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -19,6 +20,7 @@ const FeedbacksPage = () => {
   const [isImportModalOpen, setImportModalOpen] = useState(false);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [isDownloadModalOpen, setDownloadModalOpen] = useState(false);
+  const [isWhatsappModalOpen, setWhatsappModalOpen] = useState(false);
   const [editingFeedback, setEditingFeedback] = useState(null);
   const [feedbackToDelete, setFeedbackToDelete] = useState(null);
 
@@ -142,8 +144,10 @@ const FeedbacksPage = () => {
   const filteredFeedbacks = useMemo(() => {
     if (!debouncedSearchTerm) return feedbacks;
     return feedbacks.filter(feedback =>
-      feedback.topic?.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
-      feedback.group_details?.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+      (feedback.topic && feedback.topic.toLowerCase().includes(debouncedSearchTerm.toLowerCase())) ||
+      (feedback.student_details?.fullname && feedback.student_details.fullname.toLowerCase().includes(debouncedSearchTerm.toLowerCase())) ||
+      (feedback.course && feedback.course.toLowerCase().includes(debouncedSearchTerm.toLowerCase())) ||
+      (feedback.level && feedback.level.toLowerCase().includes(debouncedSearchTerm.toLowerCase()))
     );
   }, [feedbacks, debouncedSearchTerm]);
 
@@ -159,7 +163,8 @@ const FeedbacksPage = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <div className="flex gap-2">
-          <button className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-md text-white font-semibold transition" onClick={() => setDownloadModalOpen(true)}>Download PDF</button>
+          <button className="px-4 py-2 bg-teal-600 hover:bg-teal-700 rounded-md text-white font-semibold transition" onClick={() => setWhatsappModalOpen(true)}>Send WhatsApp</button>
+          <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition" onClick={() => setDownloadModalOpen(true)}>Download PDF</button>
           <button className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-md text-white font-semibold transition" onClick={() => setImportModalOpen(true)}>Import from CSV</button>
           <button className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white font-semibold transition" onClick={handleAddFeedback}>Add Feedback</button>
         </div>
@@ -211,6 +216,11 @@ const FeedbacksPage = () => {
       <DownloadFeedbackModal
         isOpen={isDownloadModalOpen}
         onClose={() => setDownloadModalOpen(false)}
+      />
+
+      <SendWhatsappModal
+        isOpen={isWhatsappModalOpen}
+        onClose={() => setWhatsappModalOpen(false)}
       />
     </div>
   );
