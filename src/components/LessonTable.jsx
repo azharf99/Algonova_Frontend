@@ -43,6 +43,7 @@ const LessonTable = ({ lessons, onEdit, onDelete, lastLessonRef }) => {
       <thead className="bg-gray-700">
         <tr className="border-b border-gray-600">
           <SortableHeader sortKey="title" sortConfig={sortConfig} onSort={requestSort}>Title</SortableHeader>
+          <SortableHeader sortKey="category" sortConfig={sortConfig} onSort={requestSort}>Category</SortableHeader>
           <SortableHeader sortKey="module" sortConfig={sortConfig} onSort={requestSort}>Module</SortableHeader>
           <SortableHeader sortKey="level" sortConfig={sortConfig} onSort={requestSort}>Level</SortableHeader>
           <SortableHeader sortKey="date_start" sortConfig={sortConfig} onSort={requestSort}>Date</SortableHeader>
@@ -57,6 +58,7 @@ const LessonTable = ({ lessons, onEdit, onDelete, lastLessonRef }) => {
           return (
             <tr key={lesson.id} ref={isLastElement ? lastLessonRef : null} className="border-b border-gray-700 hover:bg-gray-700/50">
               <td className="p-4">{lesson.title}</td>
+              <td className="p-4">{lesson.category}</td>
               <td className="p-4">{lesson.module}</td>
               <td className="p-4">{lesson.level}</td>
               <td className="p-4">{lesson.date_start}</td>

@@ -6,12 +6,14 @@ import SearchableMultiSelect from './SearchableMultiSelect';
 const LessonForm = ({ isOpen, onClose, onSubmit, lesson }) => {
   const [formData, setFormData] = useState({
     title: '',
+    category: '',
     module: '',
     level: '',
     number: 1,
     description: '',
     date_start: '',
     time_start: '',
+    meeting_link: '',
     is_active: true,
     group: '',
     students_attended: [],
@@ -41,12 +43,14 @@ const LessonForm = ({ isOpen, onClose, onSubmit, lesson }) => {
     if (lesson) {
       setFormData({
         title: lesson.title || '',
+        category: lesson.category || '',
         module: lesson.module || '',
         level: lesson.level || '',
         number: lesson.number || 1,
         description: lesson.description || '',
         date_start: lesson.date_start || '',
         time_start: lesson.time_start || '',
+        meeting_link: lesson.meeting_link || '',
         is_active: lesson.is_active ?? true,
         group: lesson.group || '',
         students_attended: lesson.students_attended || [],
@@ -54,12 +58,14 @@ const LessonForm = ({ isOpen, onClose, onSubmit, lesson }) => {
     } else {
       setFormData({
         title: '',
+        category: '',
         module: '',
         level: '',
         number: 1,
         description: '',
         date_start: '',
         time_start: '',
+        meeting_link: '',
         is_active: true,
         group: '',
         students_attended: [],
@@ -95,6 +101,10 @@ const LessonForm = ({ isOpen, onClose, onSubmit, lesson }) => {
             <input id="lesson_title" type="text" name="title" value={formData.title} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
           </div>
           <div className="space-y-1">
+            <label htmlFor="lesson_category">Category</label>
+            <input id="lesson_category" type="text" name="category" value={formData.category} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div className="space-y-1">
             <label htmlFor="lesson_module">Module</label>
             <input id="lesson_module" type="text" name="module" value={formData.module} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
@@ -122,6 +132,10 @@ const LessonForm = ({ isOpen, onClose, onSubmit, lesson }) => {
           <div className="space-y-1">
             <label htmlFor="lesson_time_start">Time Start</label>
             <input id="lesson_time_start" type="time" name="time_start" value={formData.time_start} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div className="space-y-1 md:col-span-2">
+            <label htmlFor="lesson_meeting_link">Meeting Link</label>
+            <input id="lesson_meeting_link" type="url" name="meeting_link" value={formData.meeting_link} onChange={handleChange} className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div className="space-y-1 md:col-span-2">
             <label htmlFor="lesson_description">Description</label>

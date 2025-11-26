@@ -142,8 +142,10 @@ const LessonsPage = () => {
     if (!debouncedSearchTerm) return lessons;
     return lessons.filter(lesson =>
       lesson.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+      (lesson.category && lesson.category.toLowerCase().includes(debouncedSearchTerm.toLowerCase())) ||
       lesson.module.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
-      lesson.level.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+      lesson.level.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+      (lesson.meeting_link && lesson.meeting_link.toLowerCase().includes(debouncedSearchTerm.toLowerCase()))
     );
   }, [lessons, debouncedSearchTerm]);
 
