@@ -85,6 +85,7 @@ The codebase is organized to be modular and scalable:
 ![Group List](src/assets/list-of-groups.png)
 ![Lesson List](src/assets/list-of-lessons.png)
 ![Feeedback List](src/assets/list-of-feedbacks.png)
+![Feeedback PDF Generate](src/assets/pdf-generate.png)
 ![Feeedback Example](src/assets/feedback-pdf.png)
 
 
