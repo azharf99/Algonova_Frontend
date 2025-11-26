@@ -1,9 +1,10 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import StudentsPage from './pages/StudentsPage'
 import GroupsPage from './pages/GroupsPage'
 import LessonsPage from './pages/LessonsPage'
 import FeedbacksPage from './pages/FeedbacksPage'
 import LoginPage from './pages/LoginPage'
+import HomePage from './pages/HomePage'
 import ProtectedRoute from './components/ProtectedRoute'
 import { useAuth } from './context/AuthContext'
 import { Toaster } from 'react-hot-toast'
@@ -32,7 +33,7 @@ function App() {
       />
       <nav className="py-4 border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold text-white">Student Management</Link>
+          <Link to="/" className="text-2xl font-bold text-white">Algonova Feedback Management System</Link>
           <ul className="flex items-center space-x-4">
             {user && <li><Link to="/students" className="text-gray-300 hover:text-indigo-400 transition">Students</Link></li>}
             {user && <li><Link to="/groups" className="text-gray-300 hover:text-indigo-400 transition">Groups</Link></li>}
@@ -45,6 +46,7 @@ function App() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         <div className="container mx-auto">
           <Routes>
+            <Route path="/" element={user ? <Navigate to="/students" /> : <HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/students"
@@ -78,11 +80,6 @@ function App() {
               </ProtectedRoute>
             }
             />
-            <Route path="/" element={
-              <ProtectedRoute>
-                <StudentsPage />
-              </ProtectedRoute>
-            } />
           </Routes>
         </div>
       </main>
