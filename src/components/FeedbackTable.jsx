@@ -64,8 +64,14 @@ const FeedbackTable = ({ feedbacks, onEdit, onDelete, lastFeedbackRef }) => {
               <td className="p-4">{feedback.level}</td>
               <td className="p-4">{feedback.lesson_date}</td>
               <td className="p-4">{feedback.is_sent ? 'Yes' : 'No'}</td>
-              <td className="p-4">
-                <div className="flex gap-2">
+              <td className="p-4 whitespace-nowrap">
+                <div className="flex gap-2 items-center">
+                  <button
+                    className="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm font-semibold transition"
+                    onClick={() => window.open(`https://algonova.pythonanywhere.com/media/${encodeURIComponent(feedback.group_name)}/Rapor ${encodeURIComponent(feedback.student_details.fullname)} Bulan ke-${feedback.number}.pdf`, '_blank')}
+                  >
+                    Show Document
+                  </button>
                   <button className="px-3 py-1 bg-gray-600 hover:bg-gray-500 rounded-md text-white text-sm font-semibold transition" onClick={() => onEdit(feedback)}>
                     Edit
                   </button>
